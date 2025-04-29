@@ -1,104 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Celebrate IGWE!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #f9f9f9;
-      color: #111;
-    }
-
-    header, footer {
-      background-color: #1e3a8a;
-      color: white;
-      text-align: center;
-      padding: 1rem;
-      font-weight: 600;
-    }
-
-    main {
-      padding: 2rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-      text-align: center;
-    }
-
-    img.hero {
-      width: 100%;
-      max-width: 360px;
-      border: 4px solid #1e3a8a;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    }
-
-    h1 {
-      font-size: 1.75rem;
-      font-weight: 700;
-      margin: 0;
-    }
-
-    #countdown {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: #2563eb;
-    }
-
-    .button {
-      display: block;
-      width: 100%;
-      max-width: 300px;
-      padding: 12px 20px;
-      margin: 0.5rem auto;
-      background-color: #2563eb;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      font-size: 1rem;
-      font-weight: 600;
-      text-decoration: none;
-      transition: background 0.2s ease;
-    }
-
-    .button:hover {
-      background-color: #1e40af;
-    }
-
-    footer nav {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-top: 0.5rem;
-    }
-
-    footer nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-    }
-  </style>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-  <header>🎉 Celebrate IGWE!</header>
+  <header class="blue-header">🎉 Celebrate IGWE!</header>
 
   <main>
-    <img src="images/igwe_full.jpg" alt="IGWE" class="hero" />
+    <img src="images/igwe_large.jpg" alt="IGWE" class="avatar avatar-large">
     <h1>Welcome to IGWE's Surprise Party!</h1>
     <p>The party starts in:</p>
-    <div id="countdown">Loading...</div>
-
+    <div id="countdown"></div>
     <a href="wishes.html" class="button">Leave a Birthday Wish</a>
     <a href="gallery.html" class="button">View / Upload Photos</a>
     <a href="gift.html" class="button">Send a Gift</a>
   </main>
 
-  <footer>
+  <footer class="blue-footer">
     <nav>
       <a href="index.html">Home</a>
       <a href="wishes.html">Wishes</a>
@@ -107,25 +29,6 @@
     </nav>
   </footer>
 
-  <script>
-    const countdown = document.getElementById('countdown');
-    const partyTime = new Date();
-    partyTime.setHours(partyTime.getHours() + 2);
-
-    function updateCountdown() {
-      const now = new Date();
-      const diff = partyTime - now;
-      if (diff <= 0) {
-        countdown.textContent = "🎉 The party has started!";
-        return;
-      }
-      const hrs = Math.floor(diff / 1000 / 60 / 60);
-      const mins = Math.floor((diff / 1000 / 60) % 60);
-      const secs = Math.floor((diff / 1000) % 60);
-      countdown.textContent = `${hrs}h ${mins}m ${secs}s`;
-      requestAnimationFrame(updateCountdown);
-    }
-    updateCountdown();
-  </script>
+  <script src="scripts/countdown.js"></script>
 </body>
 </html>
